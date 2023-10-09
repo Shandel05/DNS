@@ -20,9 +20,9 @@ This lab focuses on DNS and how it is used. DNS is a fundamental concept in IT a
 <h2>DNS Configuration Steps</h2>
 
 <p>
-<img src="https://i.imgur.com/5pjgtVz.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/Zl04Jyt.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/96xUgLF.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/I1crmAc.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/dl6dmJQ.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/wXqxPXA.png" height="80%" width="80%" alt="DNS Steps"/>
 </p>
 <p>
 While logged in to the client as an admin, open the command prompt. When we ping "mainframe" it will fail. Nslookup "mainframe" provides similar results and shows that there is no DNS record for it. A DNS A-record will have to be created for mainframe on the domain controller. On the domain controller, open the DNS Manager and go to the domain you created within the Forward Lookup Zones tab. In my case, it is ernestotest.com. Right click on the page and create a New Host. For name, input mainframe and the IP address should be the same IP as the domain controller so that ping can resolve. Refresh the DNS server so that the new record can be updated. Upon returning to the client, ping mainframe once again to see that it will now resolve.
@@ -30,10 +30,10 @@ While logged in to the client as an admin, open the command prompt. When we ping
 <br />
 
 <p>
-<img src="https://i.imgur.com/nLlOGKl.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/p0VcajB.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/ds0SCKW.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/d4cXTCS.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/dOEPJd0.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/O0Qq1C2.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/QBrKEGj.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/RBZj5Y5.png" height="80%" width="80%" alt="DNS Steps"/>
 </p>
 <p>
 This next exercise will showcase the DNS cache. On the domain controller, I changed mainframe's record address to 8.8.8.8 (Google) and refreshed the DNS server. When pinging mainframe on the client, it will still ping the old IP address. When the command ipconfig /displaydns is run, it will reveal that the DNS cache still has the old IP. In order to update the cache, we need to clear it. The command ipconfig /flushdns will empty the cache so that when we ping mainframe again, the IP address will be updated to the new one on the client side. When pinging mainframe, the new IP address of the record will show.
@@ -41,9 +41,9 @@ This next exercise will showcase the DNS cache. On the domain controller, I chan
 <br />
 
 <p>
-<img src="https://i.imgur.com/rI2NYU7.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/FmVM0IU.png" height="80%" width="80%" alt="DNS Steps"/>
-<img src="https://i.imgur.com/dyWduSW.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/NpIl3JU.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/Kr27BqS.png" height="80%" width="80%" alt="DNS Steps"/>
+<img src="https://i.imgur.com/WnzGaq2.png" height="80%" width="80%" alt="DNS Steps"/>
 </p>
 <p>
 A CNAME record will now be made on the DNS server that will point "search" to Google. On the Forward Lookup Zones tab in the DNS Manager, open the tab that has the domain. Create a new CNAME record called search and point it to Google. Refresh the server to save the changes. On the client, pinging search and using nslookup will return the results of the CNAME record.
